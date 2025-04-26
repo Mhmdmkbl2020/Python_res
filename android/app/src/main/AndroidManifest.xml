@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ble_file_receiver">
-
+    
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
@@ -12,6 +13,11 @@
         android:label="BLE File Receiver"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
+        
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+            
         <activity
             android:name=".MainActivity"
             android:exported="true"

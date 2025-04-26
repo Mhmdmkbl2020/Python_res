@@ -29,8 +29,7 @@ jobs:
       - name: Clean Workspace
         run: |
           flutter clean || true
-          rm -rf .dart_tool .packages .flutter-plugins || true
-          rm -f pubspec.lock || true
+          rm -rf .dart_tool || true
 
       - name: Install Dependencies
         run: flutter pub get

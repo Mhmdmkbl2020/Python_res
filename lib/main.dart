@@ -39,7 +39,7 @@ class BLEFileReceiverApp extends StatelessWidget {
   }
 }
 
-// ... (بقية الكود كما هو بدون تغيير)
+// ... (بقية الكود بدون تغيير)
 
 class DeviceScanScreen extends StatefulWidget {
   const DeviceScanScreen({super.key});

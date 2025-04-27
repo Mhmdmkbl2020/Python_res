@@ -21,13 +21,16 @@ jobs:
           channel: stable
 
       - name: Clean project
-        run: flutter clean
+        run: |
+          flutter clean
+          rm -rf android/.gradle
+          rm -rf android/app/build
 
       - name: Get dependencies
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release --split-per-abi  # <-- حذف العلم
+        run: flutter build apk --release --split-per-abi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

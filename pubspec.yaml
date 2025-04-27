@@ -32,18 +32,10 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-  
-  plugins:
-    - android:
-        package: com.example.ble_file_receiver
-        pluginClass: GeneratedPluginRegistrant
-    - ios:
-        pluginClass: GeneratedPluginRegistrant
 
 dependency_overrides:
   plugin_platform_interface: ^2.1.8
 
-# إعدادات بناء خاصة للأداء
 flutter_intl:
   enabled: true
   class_name: S

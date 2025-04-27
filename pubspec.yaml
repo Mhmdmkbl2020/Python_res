@@ -16,15 +16,17 @@ dependencies:
   permission_handler: ^14.0.0
   crypto: ^3.0.3
   path: ^1.9.0
-  platform_device_id: ^1.0.1
-  flutter_localization: ^0.0.1
+  platform_device_id: ^3.0.2  # تم التحديث إلى أحدث إصدار
+  flutter_localizations:  # تم التصحيح هنا
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   mockito: ^5.4.0
-  integration_test: ^1.5.3
+  integration_test:  # تم التعديل هنا
+    sdk: flutter
 
 flutter:
   uses-material-design: true

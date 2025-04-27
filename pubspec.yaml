@@ -16,16 +16,15 @@ dependencies:
   permission_handler: ^14.0.0
   crypto: ^3.0.3
   path: ^1.9.0
-  platform_device_id: ^3.0.2  # تم التحديث إلى أحدث إصدار
-  flutter_localizations:  # تم التصحيح هنا
-    sdk: flutter
+  platform_device_id: ^3.0.0  # التصحيح هنا
+  uuid: ^4.3.3  # إضافة حزمة UUID كبديل
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   mockito: ^5.4.0
-  integration_test:  # تم التعديل هنا
+  integration_test:
     sdk: flutter
 
 flutter:

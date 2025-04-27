@@ -1,22 +1,51 @@
 name: ble_file_receiver
-description: BLE File Receiver
+description: نظام متقدم لنقل الملفات عبر تقنية البلوتوث منخفضة الطاقة (BLE)
 version: 2.0.3+5
 publish_to: 'none'
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
-  flutter: '>=3.13.0'
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_blue_plus: ^1.16.3
-  path_provider: ^2.1.1
-  permission_handler: ^12.0.0+1
+  cupertino_icons: ^1.0.6
+  flutter_blue_plus: ^1.16.5
+  path_provider: ^2.1.5
+  permission_handler: ^14.0.0
+  crypto: ^3.0.3
+  path: ^1.9.0
+  platform_device_id: ^1.0.1
+  flutter_localization: ^0.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.0
+  mockito: ^5.4.0
+  integration_test: ^1.5.3
 
 flutter:
   uses-material-design: true
+  generate: true
+  assets:
+    - assets/images/
+    - assets/icons/
+  
+  plugins:
+    - android:
+        package: com.example.ble_file_receiver
+        pluginClass: GeneratedPluginRegistrant
+    - ios:
+        pluginClass: GeneratedPluginRegistrant
+
+dependency_overrides:
+  plugin_platform_interface: ^2.1.8
+
+# إعدادات بناء خاصة للأداء
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: ar
+  locales: [ar, en]

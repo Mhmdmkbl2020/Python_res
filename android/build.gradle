@@ -1,12 +1,11 @@
 buildscript {
-    ext.kotlin_version = '1.8.20'
+    ext.kotlin_version = '1.8.20' // إصدار Kotlin المتوافق
     repositories {
         google()
         mavenCentral()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.0'
+        classpath 'com.android.tools.build:gradle:7.4.2' // إصدار Gradle المدعوم
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -16,4 +15,8 @@ allprojects {
         google()
         mavenCentral()
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

@@ -1,7 +1,44 @@
+name: ble_file_receiver
+description: نظام متقدم لنقل الملفات عبر تقنية البلوتوث منخفضة الطاقة (BLE)
+version: 2.0.3+5
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'  # القيد المطلوب من Dart
+  flutter: '>=3.16.0'
+
 dependencies:
   flutter:
     sdk: flutter
-  flutter_blue_plus: ^1.16.5 # إصدار متوافق مع Flutter 3.29
-  permission_handler: ^12.0.0+1 # إصدار ثابت ومُختبر
-  device_info_plus: ^10.0.0 # بديل لـ platform_device_id
-  uuid: ^4.3.3 # لتوليد UUIDs
+  cupertino_icons: ^1.0.6
+  flutter_blue_plus: ^1.16.5  # إصدار متوافق مع Flutter 3.29
+  path_provider: ^2.1.5
+  permission_handler: ^12.0.0+1  # الإصدار الثابت
+  crypto: ^3.0.3  # للتشفير
+  path: ^1.9.0
+  device_info_plus: ^10.0.0  # بديل آمن
+  uuid: ^4.3.3  # توليد UUIDs
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0  # تحسين جودة الكود
+  mockito: ^5.4.0  # للاختبارات
+  integration_test:
+    sdk: flutter  # استخدام الإصدار المدمج
+
+flutter:
+  uses-material-design: true
+  generate: true  # لـ flutter_gen
+  assets:
+    - assets/images/
+    - assets/icons/
+
+dependency_overrides:
+  plugin_platform_interface: ^2.1.8  # حل تعارض الإصدارات
+
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: ar
+  locales: [ar, en]

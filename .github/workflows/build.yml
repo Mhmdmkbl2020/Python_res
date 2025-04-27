@@ -1,44 +1,42 @@
-name: Flutter Build Pipeline
+name: Flutter CI/CD
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build-android:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
 
     steps:
-      - name: Checkout Code
+      # 1. استخراج الشفرة من المستودع
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Setup Flutter
+      # 2. تثبيت Flutter (الإصدار 3.13.0)
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.13.0' # الإصدار المُحدّث
           channel: stable
-          cache: true
 
-      - name: Clean Workspace
-        run: |
-          flutter clean || true
-          rm -rf .dart_tool || true
+      # 3. تنظيف المشروع (حل مشكلة الـ Cache)
+      - name: Clean project
+        run: flutter clean
 
-      - name: Install Dependencies
+      # 4. تحميل الاعتمادات
+      - name: Get dependencies
         run: flutter pub get
 
+      # 5. بناء التطبيق (APK)
       - name: Build APK
         run: flutter build apk --release --split-per-abi
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      # 6. رفع ملفات APK كـ Artifacts (اختياري)
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
         with:
-          name: ble-receiver-apk
-          path: build/app/outputs/apk/release/app-armeabi-v7a-release.apk
+          name: release-apk
+          path: build/app/outputs/flutter-apk/

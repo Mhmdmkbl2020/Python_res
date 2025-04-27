@@ -1,51 +1,37 @@
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
+def properties = new Properties()
+
 if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        localProperties.load(reader)
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        properties.load(reader)
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+def flutterVersionCode = properties.getProperty("flutter.versionCode")?.toInteger() ?: 1
+def flutterVersionName = properties.getProperty("flutter.versionName") ?: "1.0"
 
 android {
-    compileSdkVersion 34 // تحديث لإصدار SDK 34
-    ndkVersion "25.2.9519653" // إصدار NDK المطلوب
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    namespace "com.example.python_res" // يجب أن يطابق package في AndroidManifest.xml
+    compileSdkVersion 34
 
     defaultConfig {
-        applicationId "com.example.ble_file_receiver"
-        minSdkVersion 21
+        applicationId "com.example.python_res"
+        minSdkVersion 24
         targetSdkVersion 34
-        versionCode flutterVersionCode.toInteger()
+        versionCode flutterVersionCode
         versionName flutterVersionName
-        multiDexEnabled true // تمكين MultiDex
     }
 
     buildTypes {
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -56,6 +42,7 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.multidex:multidex:2.0.1' // إضافة دعم MultiDex
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }

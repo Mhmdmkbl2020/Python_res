@@ -17,8 +17,13 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.5'  # الإصدار المُحدّث
+          flutter-version: '3.19.4'  # الإصدار الجديد
           channel: stable
+
+      - name: Clean Flutter Cache
+        run: |
+          rm -rf $FLUTTER_ROOT
+          flutter doctor
 
       - name: Clean project
         run: flutter clean

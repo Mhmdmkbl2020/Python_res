@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.8.20' // إصدار Kotlin المتوافق
+    ext.kotlin_version = '1.9.22' // إصدار Kotlin المتوافق
     repositories {
         google()
         mavenCentral()

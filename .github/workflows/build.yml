@@ -11,30 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. استخراج الشفرة من المستودع
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. تثبيت Flutter (الإصدار 3.13.0)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0' # الإصدار المُحدّث
+          flutter-version: '3.16.5'  # الإصدار المُحدّث
           channel: stable
 
-      # 3. تنظيف المشروع (حل مشكلة الـ Cache)
       - name: Clean project
         run: flutter clean
 
-      # 4. تحميل الاعتمادات
+      - name: Clean Pub Cache
+        run: rm -rf ~/.pub-cache
+
       - name: Get dependencies
         run: flutter pub get
 
-      # 5. بناء التطبيق (APK)
       - name: Build APK
         run: flutter build apk --release --split-per-abi
 
-      # 6. رفع ملفات APK كـ Artifacts (اختياري)
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:

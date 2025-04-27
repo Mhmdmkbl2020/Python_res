@@ -21,19 +21,13 @@ jobs:
           channel: stable
 
       - name: Clean project
-        run: |
-          flutter clean
-          rm -rf android/.gradle
-          rm -rf android/app/build
+        run: flutter clean
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Accept Android licenses
-        run: yes | flutter doctor --android-licenses
-
       - name: Build APK
-        run: flutter build apk --release --split-per-abi --no-sound-null-safety
+        run: flutter build apk --release --split-per-abi  # <-- حذف العلم
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

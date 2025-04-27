@@ -16,8 +16,8 @@ dependencies:
   permission_handler: ^14.0.0
   crypto: ^3.0.3
   path: ^1.9.0
-  platform_device_id: ^3.0.0  # التصحيح هنا
-  uuid: ^4.3.3  # إضافة حزمة UUID كبديل
+  device_info_plus: ^10.0.0  # استبدال platform_device_id بهذه الحزمة
+  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:

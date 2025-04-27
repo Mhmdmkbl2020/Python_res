@@ -17,17 +17,24 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.29.3'  # الإصدار الجديد
+          flutter-version: '3.29.3'
           channel: stable
 
       - name: Clean project
         run: flutter clean
 
-      - name: Clean Pub Cache
-        run: rm -rf ~/.pub-cache
+      - name: Clean caches
+        run: |
+          rm -rf ~/.pub-cache
+          rm -rf ~/.gradle
+          rm -rf android/.gradle
+          rm -rf android/app/build
 
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Accept Android licenses
+        run: flutter doctor --android-licenses -y || true
 
       - name: Build APK
         run: flutter build apk --release --split-per-abi
